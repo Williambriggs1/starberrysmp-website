@@ -1,74 +1,23 @@
-# StarberrySMP — GitHub Free Safe Preview Setup
+# StarberrySMP Website
 
-Use a **public GitHub Pages repo**, but keep commissioned originals in a local
-folder that Git never uploads.
+This is the public StarberrySMP Forest Guide hosted with GitHub Pages.
+
+## Asset safety
+
+Do **not** upload original Blockbench projects, Minecraft model JSON files, or original commissioned texture PNGs to this repository.
+
+Only upload flattened preview images that are safe to display publicly.
+
+Recommended structure:
 
 ```text
-private_assets/                <-- NEVER PUBLIC
-├── models/
-├── textures/
-└── preview_manifest.json
-        ↓
-python tools/render_previews.py
-        ↓
-previews/                      <-- PUBLIC
-└── starberry.webp
+previews/
+├── starberry.webp
+├── starberry_pie.webp
+└── forest_crown.webp
 ```
 
-The public site gets only a flattened WebP preview. It does not get the original
-model JSON, UV layout, or source texture PNG.
-
-## Setup
-
-1. Copy `private_assets.example`
-2. Rename the copy to `private_assets`
-3. Put your real model and texture inside it.
-4. Install:
-
-```bash
-python -m pip install -r tools/requirements.txt
-```
-
-5. Render:
-
-```bash
-python tools/render_previews.py
-```
-
-6. Before committing:
-
-```bash
-git status
-```
-
-`private_assets/` should NOT appear in the files being committed.
-
-## Manifest
-
-```json
-{
-  "entries": [
-    {
-      "id": "starberry",
-      "model": "models/starberry.json",
-      "textures": {
-        "0": "textures/starberry.png"
-      },
-      "output": "../previews/starberry.webp",
-      "size": 512,
-      "yaw": 35,
-      "pitch": 25,
-      "transparent": true
-    }
-  ]
-}
-```
-
-If your model uses `"texture": "#0"`, use texture key `"0"` in the manifest.
-
-## Website JSON
-
-The public crop/food/cosmetic entry references only:
+Then point a crop, food, or cosmetic entry to the preview image:
 
 ```json
 "media": {
@@ -78,12 +27,72 @@ The public crop/food/cosmetic entry references only:
 }
 ```
 
+The website does not need the original model or texture to display an entry.
+
+## Creator credit
+
+Entries can include the artist/modeler who made them:
+
+```json
+"creator": {
+  "role": "Modeler",
+  "name": "ArtistName",
+  "url": ""
+}
+```
+
+The site automatically displays the credit beneath the entry.
+
+## Editing content
+
+Most content lives in `data/`:
+
+```text
+data/
+├── server.json
+├── crops.json
+├── foods.json
+├── cosmetics.json
+├── skills.json
+├── economy.json
+├── navigation.json
+└── pages.json
+```
+
+### Crops
+Edit `data/crops.json`.
+
+### Foods
+Edit `data/foods.json`.
+
+### Cosmetics
+Edit `data/cosmetics.json`.
+
+### Bank / currency
+Edit `data/economy.json`.
+
+For example, changing:
+
+```json
+"output_amount": 100
+```
+
+will automatically update the displayed Diamond bank rate.
+
+## Local testing
+
+Because the site loads JSON files with JavaScript, run it through a small local web server instead of double-clicking `index.html`:
+
+```bash
+python -m http.server 8000
+```
+
+Then open:
+
+```text
+http://localhost:8000
+```
+
 ## Important
 
-If a private commissioned asset is ever committed once, deleting it later does
-not automatically remove it from Git history. Always check `git status` before
-your first push.
-
-Current renderer supports cuboids, face UVs, multiple texture keys, transparent
-WebP previews, yaw and pitch. Element rotations/pivots and parent-model
-inheritance are not yet supported.
+Anything placed in a public GitHub repository can be downloaded by other people. Keep commissioned source assets somewhere private and only put website-safe preview renders in `previews/`.
