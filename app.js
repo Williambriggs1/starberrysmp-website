@@ -134,21 +134,6 @@ function creatorCredit(item) {
   return `<div class="creator-credit"><span>✦</span><span>${role}: <strong>${name}</strong></span></div>`;
 }
 
-function mediaMarkup(item, mediaClass = "") {
-  const media = item.media || {};
-  const fallback = media.fallback_icon || item.icon || "✦";
-
-  if (media.src) {
-    return `
-      <div class="entry-media ${mediaClass}">
-        <img class="entry-image" src="${media.src}" alt="${item.name}" loading="lazy"
-          onerror="this.closest('.entry-media').innerHTML='<div class=&quot;media-fallback&quot;>${fallback}</div>'">
-      </div>`;
-  }
-
-  return `<div class="entry-media ${mediaClass}"><div class="media-fallback">${fallback}</div></div>`;
-}
-
 function buildWelcomePage() {
   const s = state.server;
   return {
@@ -269,8 +254,7 @@ function buildCropsPage() {
     sections: state.crops.map(crop => ({
       title: `${crop.name} ${crop.icon || ""}`,
       html: `
-        <div class="catalog-card">
-          ${mediaMarkup(crop)}
+        <div class="catalog-card" style="grid-template-columns:1fr;">
           <div class="catalog-details">
             <span class="item-tag">CUSTOM CROP</span>
             <h3>${crop.name}</h3>
@@ -296,8 +280,7 @@ function buildFoodPage() {
     sections: state.foods.map(food => ({
       title: `${food.name} ${food.icon || ""}`,
       html: `
-        <div class="catalog-card">
-          ${mediaMarkup(food, "food-media")}
+        <div class="catalog-card" style="grid-template-columns:1fr;">
           <div class="catalog-details">
             <span class="item-tag">CUSTOM FOOD</span>
             <h3>${food.name}</h3>
@@ -328,8 +311,7 @@ function buildCosmeticsPage() {
     sections: state.cosmetics.map(item => ({
       title: item.name,
       html: `
-        <div class="catalog-card">
-          ${mediaMarkup(item, "cosmetic-media")}
+        <div class="catalog-card" style="grid-template-columns:1fr;">
           <div class="catalog-details">
             <span class="item-tag">${item.category || "COSMETIC"}</span>
             <h3>${item.name}</h3>
@@ -393,6 +375,7 @@ function setupSearch() {
     const q = input.value.trim().toLowerCase();
     if (!q) {
       results.hidden = true;
+      results.innerHTML = "";
       return;
     }
 
