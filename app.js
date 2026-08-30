@@ -124,6 +124,31 @@ function renderPage(id) {
   window.scrollTo({ top: 0, behavior: "instant" });
 }
 
+function creatorCredit(item) {
+  if (!item.creator || !item.creator.name) return "";
+  const role = item.creator.role || "Modeler";
+  const name = item.creator.url
+    ? `<a href="${item.creator.url}" target="_blank" rel="noopener">${item.creator.name}</a>`
+    : item.creator.name;
+
+  return `<div class="creator-credit"><span>✦</span><span>${role}: <strong>${name}</strong></span></div>`;
+}
+
+function mediaMarkup(item, mediaClass = "") {
+  const media = item.media || {};
+  const fallback = media.fallback_icon || item.icon || "✦";
+
+  if (media.src) {
+    return `
+      <div class="entry-media ${mediaClass}">
+        <img class="entry-image" src="${media.src}" alt="${item.name}" loading="lazy"
+          onerror="this.closest('.entry-media').innerHTML='<div class=&quot;media-fallback&quot;>${fallback}</div>'">
+      </div>`;
+  }
+
+  return `<div class="entry-media ${mediaClass}"><div class="media-fallback">${fallback}</div></div>`;
+}
+
 function buildWelcomePage() {
   const s = state.server;
   return {
@@ -134,10 +159,7 @@ function buildWelcomePage() {
     sections: [
       {
         title: "About Starberry 🌿",
-        html: `
-          <p>${s.about}</p>
-          <div class="quote-card"><strong>${s.motto}</strong></div>
-        `
+        html: `<p>${s.about}</p><div class="quote-card"><strong>${s.motto}</strong></div>`
       },
       {
         title: "What can you expect? ⭐",
@@ -148,8 +170,7 @@ function buildWelcomePage() {
             `).join("")}
             <div class="feature"><strong>🌱 Custom Crops</strong><span>New crops and foods that expand survival without replacing vanilla gameplay.</span></div>
             <div class="feature"><strong>🌐 Crossplay</strong><span>Designed for both Java and Bedrock players.</span></div>
-          </div>
-        `
+          </div>`
       },
       {
         title: "Joining Information 🌱",
@@ -160,8 +181,7 @@ function buildWelcomePage() {
             <li><strong>Bedrock Port:</strong> ${s.bedrock_port}</li>
             <li><strong>Version:</strong> ${s.version}</li>
           </ul>
-          <a class="button" href="#join">View joining guide</a>
-        `
+          <a class="button" href="#join">View joining guide</a>`
       },
       {
         title: "Development 🍓",
@@ -169,8 +189,7 @@ function buildWelcomePage() {
           <ul class="clean-list">
             ${s.timeline.map(x => `<li><strong>${x.label}:</strong> ${x.value}</li>`).join("")}
           </ul>
-          <div class="quote-card">🌱 ${s.development_note}</div>
-        `
+          <div class="quote-card">🌱 ${s.development_note}</div>`
       }
     ]
   };
@@ -192,8 +211,7 @@ function buildJoinPage() {
             <li><strong>Bedrock:</strong> <span class="code-line">${s.bedrock_address}</span></li>
             <li><strong>Bedrock Port:</strong> <span class="code-line">${s.bedrock_port}</span></li>
             <li><strong>Version:</strong> ${s.version}</li>
-          </ul>
-        `
+          </ul>`
       },
       {
         title: "Java 🖥️",
@@ -204,8 +222,7 @@ function buildJoinPage() {
             <li>Select <strong>Add Server</strong>.</li>
             <li>Enter <span class="code-line">${s.java_address}</span>.</li>
             <li>Save the server and join.</li>
-          </ol>
-        `
+          </ol>`
       },
       {
         title: "Bedrock 📱",
@@ -216,8 +233,7 @@ function buildJoinPage() {
             <li>Select <strong>Add Server</strong>.</li>
             <li>Enter <span class="code-line">${s.bedrock_address}</span> and port <span class="code-line">${s.bedrock_port}</span>.</li>
             <li>Save it and join the forest.</li>
-          </ol>
-        `
+          </ol>`
       }
     ]
   };
@@ -232,385 +248,16 @@ function buildSkillsPage() {
     sections: [
       {
         title: "Core Skills 🌿",
-        html: `
-          <div class="feature-grid">
-            ${state.skills.map(skill => `
-              <div class="feature"><strong>${skill.icon} ${skill.name}</strong><span>${skill.description}</span></div>
-            `).join("")}
-          </div>
-        `
+        html: `<div class="feature-grid">${state.skills.map(skill => `<div class="feature"><strong>${skill.icon} ${skill.name}</strong><span>${skill.description}</span></div>`).join("")}</div>`
       },
       ...state.skills.map(skill => ({
         title: `${skill.name} Milestones ${skill.icon}`,
-        html: `
-          <ul class="clean-list">
-            ${skill.milestones.map(m => `<li><strong>Level ${m.level}:</strong> ${m.reward}</li>`).join("")}
-          </ul>
-        `
+        html: skill.milestones.length
+          ? `<ul class="clean-list">${skill.milestones.map(m => `<li><strong>Level ${m.level}:</strong> ${m.reward}</li>`).join("")}</ul>`
+          : `<div class="quote-card">Milestones coming soon.</div>`
       }))
     ]
   };
-}
-
-
-function creatorCredit(item) {
-  if (!item.creator || !item.creator.name) return "";
-  const role = item.creator.role || "Modeler";
-  const name = item.creator.url
-    ? `<a href="${item.creator.url}" target="_blank" rel="noopener">${item.creator.name}</a>`
-    : item.creator.name;
-
-  return `<div class="creator-credit"><span>✦</span><span>${role}: <strong>${name}</strong></span></div>`;
-}
-
-function mediaMarkup(item, mediaClass = "") {
-  const media = item.media || {};
-  const fallback = media.fallback_icon || item.icon || "✦";
-
-  if (media.type === "png" && media.src) {
-    return `
-      <div class="entry-media ${mediaClass}">
-        <img class="entry-image" src="${media.src}" alt="${item.name}" loading="lazy"
-             onerror="this.closest('.entry-media').innerHTML='<div class=&quot;media-fallback&quot;>${fallback}</div>'">
-      </div>`;
-  }
-
-  if (media.type === "model" && media.src) {
-    const viewerId = `model-${item.id}-${Math.random().toString(36).slice(2,8)}`;
-    requestAnimationFrame(() => renderMinecraftModel(viewerId, media, fallback));
-    return `
-      <div class="entry-media model-media ${mediaClass}">
-        <div id="${viewerId}" class="mc-model-viewer" aria-label="${item.name} 3D preview"></div>
-        <div class="model-badge">3D MODEL</div>
-      </div>`;
-  }
-
-  return `<div class="entry-media ${mediaClass}"><div class="media-fallback">${fallback}</div></div>`;
-}
-
-
-async function renderMinecraftModel(viewerId, media, fallback) {
-  const viewer = document.getElementById(viewerId);
-  if (!viewer) return;
-
-  try {
-    const response = await fetch(media.src);
-    if (!response.ok) throw new Error(`Could not load model: ${media.src}`);
-    const model = await response.json();
-
-    const elements = model.elements || [];
-    if (!elements.length) throw new Error("No model elements found.");
-
-    viewer.innerHTML = "";
-    const scene = document.createElement("div");
-    scene.className = "mc-scene";
-    viewer.appendChild(scene);
-
-    // Model JSON usually points to Minecraft resource-pack texture IDs such as
-    // "starberry:item/strawberry". A website cannot know where those files live,
-    // so data/*.json can supply local mappings in media.textures.
-    const textureRefs = model.textures || {};
-    const textureOverrides = media.textures || {};
-
-    function resolveTexture(faceTexture) {
-      if (!faceTexture) return null;
-
-      let ref = faceTexture;
-      const seen = new Set();
-
-      while (typeof ref === "string" && ref.startsWith("#")) {
-        const key = ref.slice(1);
-        if (seen.has(key)) break;
-        seen.add(key);
-
-        // Website-level mapping takes priority.
-        if (textureOverrides[key]) return textureOverrides[key];
-
-        ref = textureRefs[key];
-        if (!ref) return null;
-      }
-
-      if (typeof ref === "string") {
-        if (textureOverrides[ref]) return textureOverrides[ref];
-
-        // Direct relative PNG paths work as-is.
-        if (ref.endsWith(".png") || ref.startsWith("./") || ref.startsWith("../") || ref.startsWith("assets/")) {
-          return ref;
-        }
-
-        // Optional convenience: namespace:path -> assets/textures/namespace/path.png
-        // This lets exported models work if you mirror the resource-pack path.
-        if (ref.includes(":")) {
-          const [namespace, path] = ref.split(":");
-          return `assets/textures/${namespace}/${path}.png`;
-        }
-
-        return `assets/textures/${ref}.png`;
-      }
-
-      return null;
-    }
-
-    function defaultUV(faceName, from, to) {
-      const dx = to[0] - from[0];
-      const dy = to[1] - from[1];
-      const dz = to[2] - from[2];
-
-      switch (faceName) {
-        case "up":
-        case "down": return [0, 0, dx, dz];
-        case "north":
-        case "south": return [0, 0, dx, dy];
-        case "east":
-        case "west": return [0, 0, dz, dy];
-        default: return [0, 0, 16, 16];
-      }
-    }
-
-    function createFace(faceName, faceData, from, to, size, center) {
-      const face = document.createElement("div");
-      face.className = `mc-face mc-${faceName}`;
-
-      const sx = size.x, sy = size.y, sz = size.z;
-      const cx = center.x, cy = center.y, cz = center.z;
-
-      let width, height, transform;
-
-      // CSS uses Y downward. Flip Minecraft Y around the 8-unit model center.
-      const px = (cx - 8);
-      const py = -(cy - 8);
-      const pz = (cz - 8);
-
-      if (faceName === "north") {
-        width = sx; height = sy;
-        transform = `translate3d(${px}px, ${py}px, ${pz - sz/2}px) rotateY(180deg)`;
-      } else if (faceName === "south") {
-        width = sx; height = sy;
-        transform = `translate3d(${px}px, ${py}px, ${pz + sz/2}px)`;
-      } else if (faceName === "east") {
-        width = sz; height = sy;
-        transform = `translate3d(${px + sx/2}px, ${py}px, ${pz}px) rotateY(90deg)`;
-      } else if (faceName === "west") {
-        width = sz; height = sy;
-        transform = `translate3d(${px - sx/2}px, ${py}px, ${pz}px) rotateY(-90deg)`;
-      } else if (faceName === "up") {
-        width = sx; height = sz;
-        transform = `translate3d(${px}px, ${py - sy/2}px, ${pz}px) rotateX(90deg)`;
-      } else {
-        width = sx; height = sz;
-        transform = `translate3d(${px}px, ${py + sy/2}px, ${pz}px) rotateX(-90deg)`;
-      }
-
-      const unit = 10;
-      face.style.width = `${Math.max(width * unit, 1)}px`;
-      face.style.height = `${Math.max(height * unit, 1)}px`;
-      face.style.marginLeft = `${-width * unit / 2}px`;
-      face.style.marginTop = `${-height * unit / 2}px`;
-
-      // Translate model units -> CSS pixels inside the transform.
-      transform = transform.replace(/(-?\d+(?:\.\d+)?)px/g, (_, n) => `${parseFloat(n) * unit}px`);
-      face.style.transform = transform;
-
-      const texturePath = resolveTexture(faceData?.texture);
-      const uv = faceData?.uv || defaultUV(faceName, from, to);
-
-      if (texturePath) {
-        const wrap = document.createElement("div");
-        wrap.className = "mc-texture-clip";
-
-        const img = document.createElement("img");
-        img.src = texturePath;
-        img.alt = "";
-        img.draggable = false;
-
-        const u1 = uv[0], v1 = uv[1], u2 = uv[2], v2 = uv[3];
-        const uvW = Math.max(Math.abs(u2 - u1), 0.001);
-        const uvH = Math.max(Math.abs(v2 - v1), 0.001);
-
-        // Scale the full texture so the requested UV slice fills the face.
-        img.style.width = `${(16 / uvW) * 100}%`;
-        img.style.height = `${(16 / uvH) * 100}%`;
-        img.style.left = `${-(Math.min(u1,u2) / uvW) * 100}%`;
-        img.style.top = `${-(Math.min(v1,v2) / uvH) * 100}%`;
-
-        if (u2 < u1) img.style.transform += " scaleX(-1)";
-        if (v2 < v1) img.style.transform += " scaleY(-1)";
-
-        img.onerror = () => {
-          face.classList.add("mc-missing-texture");
-          wrap.innerHTML = `<span>?</span>`;
-          console.warn(`Missing model texture: ${texturePath}`);
-        };
-
-        wrap.appendChild(img);
-        face.appendChild(wrap);
-      } else {
-        const color = faceData?.color || "#d9627d";
-        face.style.background = color;
-      }
-
-      return face;
-    }
-
-    for (const element of elements) {
-      const from = element.from || [0,0,0];
-      const to = element.to || [16,16,16];
-
-      const size = {
-        x: to[0] - from[0],
-        y: to[1] - from[1],
-        z: to[2] - from[2]
-      };
-
-      const center = {
-        x: (from[0] + to[0]) / 2,
-        y: (from[1] + to[1]) / 2,
-        z: (from[2] + to[2]) / 2
-      };
-
-      const faces = element.faces || {};
-      const names = ["north","south","east","west","up","down"];
-
-      for (const name of names) {
-        // Standard Minecraft JSON may omit invisible faces.
-        if (element.faces && !faces[name]) continue;
-        scene.appendChild(createFace(name, faces[name] || {}, from, to, size, center));
-      }
-    }
-
-    // Basic mouse drag rotation.
-    let rotX = -24;
-    let rotY = 36;
-    let dragging = false;
-    let lastX = 0, lastY = 0;
-
-    function applyRotation() {
-      scene.style.transform = `rotateX(${rotX}deg) rotateY(${rotY}deg) scale(.82)`;
-    }
-    applyRotation();
-
-    viewer.addEventListener("pointerdown", e => {
-      dragging = true;
-      lastX = e.clientX;
-      lastY = e.clientY;
-      viewer.setPointerCapture?.(e.pointerId);
-    });
-
-    viewer.addEventListener("pointermove", e => {
-      if (!dragging) return;
-      rotY += (e.clientX - lastX) * .6;
-      rotX -= (e.clientY - lastY) * .45;
-      rotX = Math.max(-80, Math.min(80, rotX));
-      lastX = e.clientX;
-      lastY = e.clientY;
-      applyRotation();
-    });
-
-    viewer.addEventListener("pointerup", () => dragging = false);
-    viewer.addEventListener("pointercancel", () => dragging = false);
-
-  } catch (err) {
-    console.error(err);
-    viewer.innerHTML = `<div class="media-fallback">${fallback}</div>`;
-  }
-}
-
-async function renderSimpleModel(canvasId, src, fallback) {
-  const canvas = document.getElementById(canvasId);
-  if (!canvas) return;
-  const ctx = canvas.getContext("2d");
-
-  try {
-    const response = await fetch(src);
-    if (!response.ok) throw new Error("Model could not be loaded.");
-    const model = await response.json();
-
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-    // Starberry's lightweight local model format:
-    // { elements:[{from:[x,y,z],to:[x,y,z],color:"#hex"}] }
-    // It also accepts ordinary Minecraft/Blockbench cuboid "elements".
-    const elements = model.elements || [];
-    if (!elements.length) throw new Error("No model elements found.");
-
-    const angleY = -0.62;
-    const angleX = 0.48;
-    const scale = 8.4;
-    const ox = canvas.width / 2;
-    const oy = canvas.height / 2 + 18;
-
-    function project(p) {
-      let [x,y,z] = p;
-      x -= 8; y -= 8; z -= 8;
-
-      const cy = Math.cos(angleY), sy = Math.sin(angleY);
-      const rx = x * cy - z * sy;
-      const rz = x * sy + z * cy;
-
-      const cx = Math.cos(angleX), sx = Math.sin(angleX);
-      const ry = y * cx - rz * sx;
-      const rz2 = y * sx + rz * cx;
-
-      return [ox + rx * scale, oy - ry * scale, rz2];
-    }
-
-    const faces = [];
-    for (const el of elements) {
-      const f = el.from || [0,0,0];
-      const t = el.to || [16,16,16];
-      const color = el.color || "#d9627d";
-      const pts = {
-        "000":[f[0],f[1],f[2]], "100":[t[0],f[1],f[2]],
-        "010":[f[0],t[1],f[2]], "110":[t[0],t[1],f[2]],
-        "001":[f[0],f[1],t[2]], "101":[t[0],f[1],t[2]],
-        "011":[f[0],t[1],t[2]], "111":[t[0],t[1],t[2]]
-      };
-
-      [
-        ["north", ["000","100","110","010"], .78],
-        ["south", ["101","001","011","111"], .95],
-        ["west",  ["001","000","010","011"], .68],
-        ["east",  ["100","101","111","110"], .88],
-        ["up",    ["010","110","111","011"], 1.10],
-        ["down",  ["001","101","100","000"], .55]
-      ].forEach(([name, ids, shade]) => {
-        const p = ids.map(id => project(pts[id]));
-        faces.push({
-          p,
-          depth: p.reduce((a,v)=>a+v[2],0)/4,
-          color,
-          shade
-        });
-      });
-    }
-
-    faces.sort((a,b) => a.depth - b.depth);
-
-    for (const face of faces) {
-      ctx.beginPath();
-      ctx.moveTo(face.p[0][0], face.p[0][1]);
-      for (let i=1; i<face.p.length; i++) ctx.lineTo(face.p[i][0], face.p[i][1]);
-      ctx.closePath();
-
-      const hex = face.color.replace("#","");
-      const n = parseInt(hex.length===3 ? hex.split("").map(c=>c+c).join("") : hex,16);
-      const r = Math.max(0, Math.min(255, ((n>>16)&255)*face.shade));
-      const g = Math.max(0, Math.min(255, ((n>>8)&255)*face.shade));
-      const b = Math.max(0, Math.min(255, (n&255)*face.shade));
-      ctx.fillStyle = `rgb(${r},${g},${b})`;
-      ctx.fill();
-      ctx.strokeStyle = "rgba(15,20,16,.35)";
-      ctx.lineWidth = 1;
-      ctx.stroke();
-    }
-  } catch (err) {
-    console.error(err);
-    ctx.clearRect(0,0,canvas.width,canvas.height);
-    ctx.font = "64px sans-serif";
-    ctx.textAlign = "center";
-    ctx.textBaseline = "middle";
-    ctx.fillText(fallback, canvas.width/2, canvas.height/2);
-  }
 }
 
 function buildCropsPage() {
@@ -635,8 +282,7 @@ function buildCropsPage() {
             </div>
             ${creatorCredit(crop)}
           </div>
-        </div>
-      `
+        </div>`
     }))
   };
 }
@@ -665,14 +311,10 @@ function buildFoodPage() {
           </div>
         </div>
         <div class="recipe-card">
-          ${food.recipe.map((ingredient, i) => `
-            ${i ? '<div class="recipe-plus">+</div>' : ''}
-            <div><span>${ingredient.icon}</span><strong>${ingredient.amount}× ${ingredient.name}</strong></div>
-          `).join("")}
+          ${food.recipe.map((ingredient, i) => `${i ? '<div class="recipe-plus">+</div>' : ''}<div><span>${ingredient.icon}</span><strong>${ingredient.amount}× ${ingredient.name}</strong></div>`).join("")}
           <div class="recipe-arrow">→</div>
           <div><span>${food.icon}</span><strong>1× ${food.name}</strong></div>
-        </div>
-      `
+        </div>`
     }))
   };
 }
@@ -682,9 +324,9 @@ function buildCosmeticsPage() {
     category: "GETTING STARTED",
     eyebrow: "Collection",
     title: "✨ Cosmetics",
-    intro: "Browse cosmetic items and see who created each model.",
+    intro: "Browse cosmetic items and see who created each piece.",
     sections: state.cosmetics.map(item => ({
-      title: `${item.name}`,
+      title: item.name,
       html: `
         <div class="catalog-card">
           ${mediaMarkup(item, "cosmetic-media")}
@@ -695,8 +337,7 @@ function buildCosmeticsPage() {
             ${item.availability ? `<div class="stat-row"><span><strong>Availability:</strong> ${item.availability}</span></div>` : ""}
             ${creatorCredit(item)}
           </div>
-        </div>
-      `
+        </div>`
     }))
   };
 }
@@ -718,18 +359,11 @@ function buildEconomyPage() {
         html: `
           <p>${e.bank.description}</p>
           <div class="bank-rate">
-            <div class="bank-item">
-              <span class="bank-icon">${e.bank.input_icon}</span>
-              <div><small>SELL</small><strong>${e.bank.input_amount} ${e.bank.input_item}</strong></div>
-            </div>
+            <div class="bank-item"><span class="bank-icon">${e.bank.input_icon}</span><div><small>SELL</small><strong>${e.bank.input_amount} ${e.bank.input_item}</strong></div></div>
             <div class="bank-arrow">→</div>
-            <div class="bank-item payout">
-              <span class="bank-icon">${e.bank.output_icon}</span>
-              <div><small>RECEIVE</small><strong>$${e.bank.output_amount}</strong></div>
-            </div>
+            <div class="bank-item payout"><span class="bank-icon">${e.bank.output_icon}</span><div><small>RECEIVE</small><strong>$${e.bank.output_amount}</strong></div></div>
           </div>
-          <div class="notice"><strong>Bank Rate:</strong> ${e.bank.input_amount} ${e.bank.input_item} = $${e.bank.output_amount}</div>
-        `
+          <div class="notice"><strong>Bank Rate:</strong> ${e.bank.input_amount} ${e.bank.input_item} = $${e.bank.output_amount}</div>`
       },
       {
         title: "Why this baseline? ✦",
@@ -742,8 +376,8 @@ function buildEconomyPage() {
 function setupSearch() {
   const input = document.getElementById("siteSearch");
   const results = document.getElementById("searchResults");
-
   const searchable = [];
+
   state.navigation.groups.forEach(group => {
     group.pages.forEach(p => {
       searchable.push({
@@ -761,6 +395,7 @@ function setupSearch() {
       results.hidden = true;
       return;
     }
+
     const matches = searchable.filter(x => x.text.includes(q)).slice(0, 8);
     results.innerHTML = matches.length
       ? matches.map(x => `<a href="#${x.id}"><strong>${x.label}</strong><small>${x.category}</small></a>`).join("")
