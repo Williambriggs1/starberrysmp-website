@@ -1,0 +1,24 @@
+[
+  {
+    "id": "starberry",
+    "name": "Starberry",
+    "icon": "🍓",
+    "description": "A small berry crop found within the Starberry forest. Starberries can be grown on farmland and used in custom recipes.",
+    "growth": "Farmland",
+    "harvest": "1–3 Starberries",
+    "uses": [
+      "Starberry Pie",
+      "Trading"
+    ],
+    "media": {
+      "type": "png",
+      "src": "previews/starberry.webp",
+      "fallback_icon": "🍓"
+    },
+    "creator": {
+      "role": "Modeler",
+      "name": "Example Artist",
+      "url": ""
+    }
+  }
+]

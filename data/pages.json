@@ -1,0 +1,182 @@
+{
+  "rules": {
+    "category": "THE FOREST",
+    "title": "📜 Server Rules",
+    "eyebrow": "THE FOREST",
+    "intro": "Community rules can be added here when they are finalized.",
+    "sections": [
+      {
+        "title": "Coming Soon 🌱",
+        "html": "<p>Community rules can be added here when they are finalized.</p><div class='quote-card'>This page is ready for your final Starberry information.</div>"
+      }
+    ]
+  },
+  "links": {
+    "category": "THE FOREST",
+    "title": "🔗 Important Links",
+    "eyebrow": "THE FOREST",
+    "intro": "Discord, store, voting, map, and social links can live here.",
+    "sections": [
+      {
+        "title": "Coming Soon 🌱",
+        "html": "<p>Discord, store, voting, map, and social links can live here.</p><div class='quote-card'>This page is ready for your final Starberry information.</div>"
+      }
+    ]
+  },
+  "faq": {
+    "category": "THE FOREST",
+    "title": "❓ FAQ",
+    "eyebrow": "THE FOREST",
+    "intro": "Common questions about crossplay, resets, claims, ranks, and gameplay.",
+    "sections": [
+      {
+        "title": "Coming Soon 🌱",
+        "html": "<p>Common questions about crossplay, resets, claims, ranks, and gameplay.</p><div class='quote-card'>This page is ready for your final Starberry information.</div>"
+      }
+    ]
+  },
+  "getting-started": {
+    "category": "GETTING STARTED",
+    "title": "🏡 Getting Started",
+    "eyebrow": "GETTING STARTED",
+    "intro": "A first-hour guide for new players: spawn, starter resources, claiming, money, and what to do next.",
+    "sections": [
+      {
+        "title": "Coming Soon 🌱",
+        "html": "<p>A first-hour guide for new players: spawn, starter resources, claiming, money, and what to do next.</p><div class='quote-card'>This page is ready for your final Starberry information.</div>"
+      }
+    ]
+  },
+  "claims": {
+    "category": "GETTING STARTED",
+    "title": "🪧 How To Claim",
+    "eyebrow": "GETTING STARTED",
+    "intro": "Document the land-claim process here with simple numbered steps.",
+    "sections": [
+      {
+        "title": "Coming Soon 🌱",
+        "html": "<p>Document the land-claim process here with simple numbered steps.</p><div class='quote-card'>This page is ready for your final Starberry information.</div>"
+      }
+    ]
+  },
+  "commands": {
+    "category": "GETTING STARTED",
+    "title": "⌨️ Commands",
+    "eyebrow": "GETTING STARTED",
+    "intro": "A searchable list of useful player commands.",
+    "sections": [
+      {
+        "title": "Coming Soon 🌱",
+        "html": "<p>A searchable list of useful player commands.</p><div class='quote-card'>This page is ready for your final Starberry information.</div>"
+      }
+    ]
+  },
+  "server-info": {
+    "category": "GETTING STARTED",
+    "title": "🌎 Server Information",
+    "eyebrow": "GETTING STARTED",
+    "intro": "Technical and gameplay information about StarberrySMP.",
+    "sections": [
+      {
+        "title": "Coming Soon 🌱",
+        "html": "<p>Technical and gameplay information about StarberrySMP.</p><div class='quote-card'>This page is ready for your final Starberry information.</div>"
+      }
+    ]
+  },
+  "cosmetics": {
+    "category": "GETTING STARTED",
+    "title": "✨ Cosmetics",
+    "eyebrow": "GETTING STARTED",
+    "intro": "Cosmetic-only features, tags, particles, glows, and supporter customization.",
+    "sections": [
+      {
+        "title": "Coming Soon 🌱",
+        "html": "<p>Cosmetic-only features, tags, particles, glows, and supporter customization.</p><div class='quote-card'>This page is ready for your final Starberry information.</div>"
+      }
+    ]
+  },
+  "farming": {
+    "category": "GAMEPLAY",
+    "title": "🌾 Farming",
+    "eyebrow": "GAMEPLAY",
+    "intro": "Farming mechanics, right-click harvest, crop progression, and related information.",
+    "sections": [
+      {
+        "title": "Coming Soon 🌱",
+        "html": "<p>Farming mechanics, right-click harvest, crop progression, and related information.</p><div class='quote-card'>This page is ready for your final Starberry information.</div>"
+      }
+    ]
+  },
+  "mining": {
+    "category": "GAMEPLAY",
+    "title": "⛏️ Mining",
+    "eyebrow": "GAMEPLAY",
+    "intro": "Mining progression, vein mining rules, Stardust, and milestones.",
+    "sections": [
+      {
+        "title": "Coming Soon 🌱",
+        "html": "<p>Mining progression, vein mining rules, Stardust, and milestones.</p><div class='quote-card'>This page is ready for your final Starberry information.</div>"
+      }
+    ]
+  },
+  "foraging": {
+    "category": "GAMEPLAY",
+    "title": "🍃 Foraging",
+    "eyebrow": "GAMEPLAY",
+    "intro": "Foraging progression, natural logs, treefeller rules, and milestones.",
+    "sections": [
+      {
+        "title": "Coming Soon 🌱",
+        "html": "<p>Foraging progression, natural logs, treefeller rules, and milestones.</p><div class='quote-card'>This page is ready for your final Starberry information.</div>"
+      }
+    ]
+  },
+  "fishing": {
+    "category": "GAMEPLAY",
+    "title": "🎣 Fishing",
+    "eyebrow": "GAMEPLAY",
+    "intro": "Fishing progression, catches, rewards, and milestones.",
+    "sections": [
+      {
+        "title": "Coming Soon 🌱",
+        "html": "<p>Fishing progression, catches, rewards, and milestones.</p><div class='quote-card'>This page is ready for your final Starberry information.</div>"
+      }
+    ]
+  },
+  "events": {
+    "category": "COMMUNITY",
+    "title": "🎉 Events",
+    "eyebrow": "COMMUNITY",
+    "intro": "Recurring events, seasonal events, and how players participate.",
+    "sections": [
+      {
+        "title": "Coming Soon 🌱",
+        "html": "<p>Recurring events, seasonal events, and how players participate.</p><div class='quote-card'>This page is ready for your final Starberry information.</div>"
+      }
+    ]
+  },
+  "supporter": {
+    "category": "COMMUNITY",
+    "title": "💖 Supporter",
+    "eyebrow": "COMMUNITY",
+    "intro": "Supporter perks and community-focused benefits.",
+    "sections": [
+      {
+        "title": "Coming Soon 🌱",
+        "html": "<p>Supporter perks and community-focused benefits.</p><div class='quote-card'>This page is ready for your final Starberry information.</div>"
+      }
+    ]
+  },
+  "changelog": {
+    "category": "COMMUNITY",
+    "title": "📢 Changelog",
+    "eyebrow": "COMMUNITY",
+    "intro": "Concise update notes so players can quickly see what changed.",
+    "sections": [
+      {
+        "title": "Coming Soon 🌱",
+        "html": "<p>Concise update notes so players can quickly see what changed.</p><div class='quote-card'>This page is ready for your final Starberry information.</div>"
+      }
+    ]
+  }
+}

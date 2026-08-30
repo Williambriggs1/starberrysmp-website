@@ -1,0 +1,19 @@
+[
+  {
+    "id": "forest-crown",
+    "name": "Forest Crown",
+    "category": "Head Cosmetic",
+    "description": "An example wearable cosmetic entry for the Starberry guide.",
+    "media": {
+      "type": "png",
+      "src": "",
+      "fallback_icon": "👑"
+    },
+    "creator": {
+      "role": "Modeler",
+      "name": "Example Artist",
+      "url": ""
+    },
+    "availability": "Example / Coming Soon"
+  }
+]

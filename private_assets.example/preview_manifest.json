@@ -1,0 +1,16 @@
+{
+  "entries": [
+    {
+      "id": "starberry",
+      "model": "models/starberry.json",
+      "textures": {
+        "0": "textures/starberry.png"
+      },
+      "output": "../previews/starberry.webp",
+      "size": 512,
+      "yaw": 35,
+      "pitch": 25,
+      "transparent": true
+    }
+  ]
+}

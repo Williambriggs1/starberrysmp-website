@@ -1,0 +1,41 @@
+[
+  {
+    "id": "starberry-pie",
+    "name": "Starberry Pie",
+    "icon": "🥧",
+    "description": "A sweet pie baked with freshly harvested Starberries. It is a simple example of how custom crops can feed into Starberry's cooking system.",
+    "type": "Food",
+    "main_ingredient": "Starberry",
+    "purpose": [
+      "Eating",
+      "Trading"
+    ],
+    "recipe": [
+      {
+        "name": "Starberry",
+        "icon": "🍓",
+        "amount": 3
+      },
+      {
+        "name": "Wheat",
+        "icon": "🌾",
+        "amount": 2
+      },
+      {
+        "name": "Sugar",
+        "icon": "🍬",
+        "amount": 1
+      }
+    ],
+    "media": {
+      "type": "png",
+      "src": "",
+      "fallback_icon": "🥧"
+    },
+    "creator": {
+      "role": "Modeler",
+      "name": "Example Artist",
+      "url": ""
+    }
+  }
+]

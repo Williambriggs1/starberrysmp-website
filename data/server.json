@@ -1,0 +1,28 @@
+{
+  "tagline": "Your field guide to a cozy survival world filled with progression, discovery, community, and a little forest magic.",
+  "about": "StarberrySMP is built around one simple idea: make Minecraft feel fresh again without taking away what makes vanilla survival special. Grow your farm, explore the world, improve your skills, discover custom crops and foods, build your home, open a shop, and make your own little place in the Starberry community.",
+  "motto": "Starberry should still feel like Minecraft — just with a little forest magic sprinkled in. ✨",
+  "java_address": "Coming Soon",
+  "bedrock_address": "Coming Soon",
+  "bedrock_port": 19132,
+  "version": "Coming Soon",
+  "development_note": "The forest is still growing.",
+  "timeline": [
+    {
+      "label": "Development Began",
+      "value": "2026"
+    },
+    {
+      "label": "Closed Testing",
+      "value": "Coming Soon"
+    },
+    {
+      "label": "Public Beta",
+      "value": "Coming Soon"
+    },
+    {
+      "label": "Launch",
+      "value": "Coming Soon"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "intro": "Starberry uses a simple player economy designed around trading, shops, and a stable baseline source of money.",
+  "currency_description": "Your balance is used for player shops, trading, and other server features.",
+  "currency_goal": "The goal is to keep money useful without making survival feel like a grind for cash.",
+  "bank": {
+    "description": "The Bank gives every player a consistent way to convert diamonds into server currency.",
+    "input_item": "Diamond",
+    "input_icon": "💎",
+    "input_amount": 1,
+    "output_icon": "💵",
+    "output_amount": 100,
+    "reason": "Diamonds give the economy a familiar Minecraft resource as its baseline. Players can still make money through trading and player shops, while the Bank provides a predictable minimum value for diamonds."
+  }
+}

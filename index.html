@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>StarberrySMP • Forest Guide</title>
+  <meta name="description" content="StarberrySMP forest guide and player documentation." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <button class="icon-button mobile-only" id="menuToggle" aria-label="Open navigation">☰</button>
+    <a class="brand" href="#welcome">
+      <span class="brand-mark">🍓</span>
+      <span>
+        <strong>StarberrySMP</strong>
+        <small>Forest Guide</small>
+      </span>
+    </a>
+
+    <div class="search-wrap">
+      <span class="search-icon">⌕</span>
+      <input id="siteSearch" type="search" placeholder="Search the forest guide..." autocomplete="off" />
+      <kbd>Ctrl K</kbd>
+      <div id="searchResults" class="search-results" hidden></div>
+    </div>
+
+    <a class="top-link" href="#join">Play</a>
+  </header>
+
+  <div class="layout">
+    <aside class="sidebar" id="sidebar">
+      <nav id="nav"></nav>
+      <div class="sidebar-footer">
+        <span>🌱</span>
+        <span>The forest is still growing.</span>
+      </div>
+    </aside>
+
+    <main class="content">
+      <article id="page">
+        <section class="hero">
+          <span class="eyebrow">Loading</span>
+          <h1>Growing the forest...</h1>
+          <p>Loading Starberry data.</p>
+        </section>
+      </article>
+    </main>
+
+    <aside class="toc">
+      <div class="toc-title">ON THIS PAGE</div>
+      <nav id="toc"></nav>
+    </aside>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

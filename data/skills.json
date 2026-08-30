@@ -1,0 +1,59 @@
+[
+  {
+    "id": "farming",
+    "name": "Farming",
+    "icon": "🌾",
+    "short_description": "Progress, harvest, and unlock useful farming milestones.",
+    "description": "Harvest crops and develop into a more efficient farmer.",
+    "milestones": [
+      {
+        "level": 5,
+        "reward": "Farmer Hat"
+      },
+      {
+        "level": 10,
+        "reward": "Right-Click Harvest"
+      },
+      {
+        "level": 20,
+        "reward": "Bonus Harvest"
+      },
+      {
+        "level": 30,
+        "reward": "Seed Saver"
+      },
+      {
+        "level": 40,
+        "reward": "Auto-Replant"
+      },
+      {
+        "level": 50,
+        "reward": "Bountiful Harvest"
+      }
+    ]
+  },
+  {
+    "id": "mining",
+    "name": "Mining",
+    "icon": "⛏️",
+    "short_description": "Mine naturally, level your skill, and unlock quality-of-life abilities.",
+    "description": "Break natural stone and ores to improve your mining progression.",
+    "milestones": []
+  },
+  {
+    "id": "foraging",
+    "name": "Foraging",
+    "icon": "🍃",
+    "short_description": "Explore forests, gather resources, and progress through woodland activities.",
+    "description": "Gather natural woodland resources and progress through exploration.",
+    "milestones": []
+  },
+  {
+    "id": "fishing",
+    "name": "Fishing",
+    "icon": "🎣",
+    "short_description": "Relax by the water while working toward fishing progression and rewards.",
+    "description": "Catch fish and other finds while building your fishing skill.",
+    "milestones": []
+  }
+]
