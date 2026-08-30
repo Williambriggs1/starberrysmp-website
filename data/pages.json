@@ -63,11 +63,27 @@
     "category": "GETTING STARTED",
     "title": "🏡 Getting Started",
     "eyebrow": "GETTING STARTED",
-    "intro": "A first-hour guide for new players: spawn, starter resources, claiming, money, and what to do next.",
+    "intro": "StarberrySMP is Minecraft at its core — familiar survival gameplay with a few cozy progression systems layered naturally on top.",
     "sections": [
       {
-        "title": "Coming Soon 🌱",
-        "html": "<p>A first-hour guide for new players: spawn, starter resources, claiming, money, and what to do next.</p><div class='quote-card'>This page is ready for your final Starberry information.</div>"
+        "title": "Your First Steps 🌲",
+        "html": "<p>When you first join StarberrySMP, you can play almost exactly how you would in vanilla Minecraft. Explore, gather resources, build a home, mine, farm, fish, and settle wherever the forest takes you.</p><p>You'll begin with a simple set of <strong>custom wooden tools and armor</strong> to help you get started. From there, normal Minecraft progression takes over.</p><div class='quote-card'>🍓 There is no complicated tutorial or locked progression path — just start playing Minecraft.</div>"
+      },
+      {
+        "title": "Skills Grow With You ⭐",
+        "html": "<p>You do not need to select a class, activate a job, or grind special quests to level your skills. Your skills improve <strong>naturally through gameplay</strong>.</p><ul class='clean-list'><li><strong>Farming</strong> grows as you farm and harvest crops.</li><li><strong>Mining</strong> grows as you mine.</li><li><strong>Foraging</strong> grows as you gather natural wood and explore the forest.</li><li><strong>Fishing</strong> grows as you fish.</li></ul><p>As your skills level up, you'll gradually unlock new perks and features that complement normal survival gameplay.</p>"
+      },
+      {
+        "title": "Unlocking Custom Crops 🌱",
+        "html": "<p>Custom crops are tied to your <strong>Farming skill</strong>. As your Farming level increases, new crops become available for you to grow and use.</p><p>This means you are not handed every custom crop on day one. Your farm slowly expands alongside your progression, giving you new ingredients and recipes to discover as you continue playing.</p>"
+      },
+      {
+        "title": "Find a Place to Call Home 🏡",
+        "html": "<p>Once you've found an area you like, build however you normally would in Minecraft. Before getting too far into your build, we recommend protecting the area with a land claim.</p><a class='button' href='#claims'>View the Claiming Guide</a>"
+      },
+      {
+        "title": "What Should I Do Next? ✨",
+        "html": "<div class='feature-grid'><div class='feature'><strong>🌲 Explore</strong><span>Head into the world and find somewhere that feels like home.</span></div><div class='feature'><strong>🏡 Build</strong><span>Start your base and protect it with a claim.</span></div><div class='feature'><strong>⭐ Play Naturally</strong><span>Mine, farm, forage, and fish to level your skills as you play.</span></div><div class='feature'><strong>🌱 Grow Your Farm</strong><span>Raise your Farming level to unlock more custom crops and foods.</span></div></div>"
       }
     ]
   },
