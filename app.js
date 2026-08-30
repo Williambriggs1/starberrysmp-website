@@ -150,9 +150,7 @@ function buildWelcomePage() {
         title: "What can you expect? ⭐",
         html: `
           <div class="feature-grid">
-            ${state.skills.map(skill => `
-              <div class="feature"><strong>${skill.icon} ${skill.name}</strong><span>${skill.short_description}</span></div>
-            `).join("")}
+            ${state.skills.map(skill => `<div class="feature"><strong>${skill.icon} ${skill.name}</strong><span>${skill.short_description}</span></div>`).join("")}
             <div class="feature"><strong>🌱 Custom Crops</strong><span>New crops and foods that expand survival without replacing vanilla gameplay.</span></div>
             <div class="feature"><strong>🌐 Crossplay</strong><span>Designed for both Java and Bedrock players.</span></div>
           </div>`
@@ -170,11 +168,7 @@ function buildWelcomePage() {
       },
       {
         title: "Development 🍓",
-        html: `
-          <ul class="clean-list">
-            ${s.timeline.map(x => `<li><strong>${x.label}:</strong> ${x.value}</li>`).join("")}
-          </ul>
-          <div class="quote-card">🌱 ${s.development_note}</div>`
+        html: `<ul class="clean-list">${s.timeline.map(x => `<li><strong>${x.label}:</strong> ${x.value}</li>`).join("")}</ul><div class="quote-card">🌱 ${s.development_note}</div>`
       }
     ]
   };
@@ -190,35 +184,15 @@ function buildJoinPage() {
     sections: [
       {
         title: "Server Info 🍓",
-        html: `
-          <ul class="clean-list">
-            <li><strong>Java:</strong> <span class="code-line">${s.java_address}</span></li>
-            <li><strong>Bedrock:</strong> <span class="code-line">${s.bedrock_address}</span></li>
-            <li><strong>Bedrock Port:</strong> <span class="code-line">${s.bedrock_port}</span></li>
-            <li><strong>Version:</strong> ${s.version}</li>
-          </ul>`
+        html: `<ul class="clean-list"><li><strong>Java:</strong> <span class="code-line">${s.java_address}</span></li><li><strong>Bedrock:</strong> <span class="code-line">${s.bedrock_address}</span></li><li><strong>Bedrock Port:</strong> <span class="code-line">${s.bedrock_port}</span></li><li><strong>Version:</strong> ${s.version}</li></ul>`
       },
       {
         title: "Java 🖥️",
-        html: `
-          <ol class="steps">
-            <li>Open Minecraft: Java Edition.</li>
-            <li>Choose <strong>Multiplayer</strong>.</li>
-            <li>Select <strong>Add Server</strong>.</li>
-            <li>Enter <span class="code-line">${s.java_address}</span>.</li>
-            <li>Save the server and join.</li>
-          </ol>`
+        html: `<ol class="steps"><li>Open Minecraft: Java Edition.</li><li>Choose <strong>Multiplayer</strong>.</li><li>Select <strong>Add Server</strong>.</li><li>Enter <span class="code-line">${s.java_address}</span>.</li><li>Save the server and join.</li></ol>`
       },
       {
         title: "Bedrock 📱",
-        html: `
-          <ol class="steps">
-            <li>Open Minecraft Bedrock Edition.</li>
-            <li>Press <strong>Play</strong> and open the <strong>Servers</strong> tab.</li>
-            <li>Select <strong>Add Server</strong>.</li>
-            <li>Enter <span class="code-line">${s.bedrock_address}</span> and port <span class="code-line">${s.bedrock_port}</span>.</li>
-            <li>Save it and join the forest.</li>
-          </ol>`
+        html: `<ol class="steps"><li>Open Minecraft Bedrock Edition.</li><li>Press <strong>Play</strong> and open the <strong>Servers</strong> tab.</li><li>Select <strong>Add Server</strong>.</li><li>Enter <span class="code-line">${s.bedrock_address}</span> and port <span class="code-line">${s.bedrock_port}</span>.</li><li>Save it and join the forest.</li></ol>`
       }
     ]
   };
@@ -246,59 +220,58 @@ function buildSkillsPage() {
 }
 
 function buildCropsPage() {
+  const cards = state.crops.map(crop => `
+    <article class="catalog-card" style="grid-template-columns:1fr;margin:0;padding:14px;min-width:0;">
+      <div class="catalog-details" style="padding:0;">
+        <span class="item-tag">CUSTOM CROP</span>
+        <h3 style="margin:4px 0 6px;font-size:22px;">${crop.icon || "🌱"} ${crop.name}</h3>
+        <p style="margin:0 0 10px;font-size:14px;line-height:1.55;">${crop.description}</p>
+        <div class="stat-row">
+          <span><strong>Growth:</strong> ${crop.growth}</span>
+          <span><strong>Harvest:</strong> ${crop.harvest}</span>
+          <span><strong>Used For:</strong> ${crop.uses.join(", ")}</span>
+        </div>
+        ${creatorCredit(crop)}
+      </div>
+    </article>`).join("");
+
   return {
     category: "GAMEPLAY",
     eyebrow: "Gameplay",
     title: "🌱 Custom Crops",
     intro: "Discover new crops that add variety to farming while keeping the system simple and vanilla-friendly.",
-    sections: state.crops.map(crop => ({
-      title: `${crop.name} ${crop.icon || ""}`,
-      html: `
-        <div class="catalog-card" style="grid-template-columns:1fr;">
-          <div class="catalog-details">
-            <span class="item-tag">CUSTOM CROP</span>
-            <h3>${crop.name}</h3>
-            <p>${crop.description}</p>
-            <div class="stat-row">
-              <span><strong>Growth:</strong> ${crop.growth}</span>
-              <span><strong>Harvest:</strong> ${crop.harvest}</span>
-              <span><strong>Used For:</strong> ${crop.uses.join(", ")}</span>
-            </div>
-            ${creatorCredit(crop)}
-          </div>
-        </div>`
-    }))
+    sections: [{
+      title: "Crop Collection 🌿",
+      html: `<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:14px;align-items:stretch;">${cards}</div>`
+    }]
   };
 }
 
 function buildFoodPage() {
+  const cards = state.foods.map(food => `
+    <article class="catalog-card" style="grid-template-columns:1fr;margin:0;padding:14px;min-width:0;">
+      <div class="catalog-details" style="padding:0;">
+        <span class="item-tag">CUSTOM FOOD</span>
+        <h3 style="margin:4px 0 6px;font-size:22px;">${food.icon || "🍽️"} ${food.name}</h3>
+        <p style="margin:0 0 10px;font-size:14px;line-height:1.55;">${food.description}</p>
+        <div class="stat-row" style="margin-bottom:10px;">
+          <span><strong>Type:</strong> ${food.type}</span>
+          <span><strong>Main:</strong> ${food.main_ingredient}</span>
+        </div>
+        <div style="font-size:12px;color:#aebbae;line-height:1.55;"><strong>Recipe:</strong> ${food.recipe.map(i => `${i.amount}× ${i.name}`).join(" + ")}</div>
+        ${creatorCredit(food)}
+      </div>
+    </article>`).join("");
+
   return {
     category: "GAMEPLAY",
     eyebrow: "Gameplay",
     title: "🥧 Cooking & Food",
     intro: "Turn crops and familiar ingredients into cozy foods with straightforward recipes.",
-    sections: state.foods.map(food => ({
-      title: `${food.name} ${food.icon || ""}`,
-      html: `
-        <div class="catalog-card" style="grid-template-columns:1fr;">
-          <div class="catalog-details">
-            <span class="item-tag">CUSTOM FOOD</span>
-            <h3>${food.name}</h3>
-            <p>${food.description}</p>
-            <div class="stat-row">
-              <span><strong>Type:</strong> ${food.type}</span>
-              <span><strong>Main Ingredient:</strong> ${food.main_ingredient}</span>
-              <span><strong>Purpose:</strong> ${food.purpose.join(", ")}</span>
-            </div>
-            ${creatorCredit(food)}
-          </div>
-        </div>
-        <div class="recipe-card">
-          ${food.recipe.map((ingredient, i) => `${i ? '<div class="recipe-plus">+</div>' : ''}<div><span>${ingredient.icon}</span><strong>${ingredient.amount}× ${ingredient.name}</strong></div>`).join("")}
-          <div class="recipe-arrow">→</div>
-          <div><span>${food.icon}</span><strong>1× ${food.name}</strong></div>
-        </div>`
-    }))
+    sections: [{
+      title: "Recipe Collection 🍽️",
+      html: `<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:14px;align-items:stretch;">${cards}</div>`
+    }]
   };
 }
 
@@ -310,16 +283,7 @@ function buildCosmeticsPage() {
     intro: "Browse cosmetic items and see who created each piece.",
     sections: state.cosmetics.map(item => ({
       title: item.name,
-      html: `
-        <div class="catalog-card" style="grid-template-columns:1fr;">
-          <div class="catalog-details">
-            <span class="item-tag">${item.category || "COSMETIC"}</span>
-            <h3>${item.name}</h3>
-            <p>${item.description}</p>
-            ${item.availability ? `<div class="stat-row"><span><strong>Availability:</strong> ${item.availability}</span></div>` : ""}
-            ${creatorCredit(item)}
-          </div>
-        </div>`
+      html: `<div class="catalog-card" style="grid-template-columns:1fr;"><div class="catalog-details"><span class="item-tag">${item.category || "COSMETIC"}</span><h3>${item.name}</h3><p>${item.description}</p>${item.availability ? `<div class="stat-row"><span><strong>Availability:</strong> ${item.availability}</span></div>` : ""}${creatorCredit(item)}</div></div>`
     }))
   };
 }
@@ -332,25 +296,12 @@ function buildEconomyPage() {
     title: "💰 Currency & Bank",
     intro: e.intro,
     sections: [
-      {
-        title: "Currency 💵",
-        html: `<p>${e.currency_description}</p><div class="quote-card"><strong>${e.currency_goal}</strong></div>`
-      },
+      { title: "Currency 💵", html: `<p>${e.currency_description}</p><div class="quote-card"><strong>${e.currency_goal}</strong></div>` },
       {
         title: "The Bank 🏦",
-        html: `
-          <p>${e.bank.description}</p>
-          <div class="bank-rate">
-            <div class="bank-item"><span class="bank-icon">${e.bank.input_icon}</span><div><small>SELL</small><strong>${e.bank.input_amount} ${e.bank.input_item}</strong></div></div>
-            <div class="bank-arrow">→</div>
-            <div class="bank-item payout"><span class="bank-icon">${e.bank.output_icon}</span><div><small>RECEIVE</small><strong>$${e.bank.output_amount}</strong></div></div>
-          </div>
-          <div class="notice"><strong>Bank Rate:</strong> ${e.bank.input_amount} ${e.bank.input_item} = $${e.bank.output_amount}</div>`
+        html: `<p>${e.bank.description}</p><div class="bank-rate"><div class="bank-item"><span class="bank-icon">${e.bank.input_icon}</span><div><small>SELL</small><strong>${e.bank.input_amount} ${e.bank.input_item}</strong></div></div><div class="bank-arrow">→</div><div class="bank-item payout"><span class="bank-icon">${e.bank.output_icon}</span><div><small>RECEIVE</small><strong>$${e.bank.output_amount}</strong></div></div></div><div class="notice"><strong>Bank Rate:</strong> ${e.bank.input_amount} ${e.bank.input_item} = $${e.bank.output_amount}</div>`
       },
-      {
-        title: "Why this baseline? ✦",
-        html: `<p>${e.bank.reason}</p>`
-      }
+      { title: "Why this baseline? ✦", html: `<p>${e.bank.reason}</p>` }
     ]
   };
 }
@@ -362,12 +313,7 @@ function setupSearch() {
 
   state.navigation.groups.forEach(group => {
     group.pages.forEach(p => {
-      searchable.push({
-        id: p.id,
-        label: p.label,
-        category: group.title,
-        text: `${p.label} ${group.title}`.toLowerCase()
-      });
+      searchable.push({ id: p.id, label: p.label, category: group.title, text: `${p.label} ${group.title}`.toLowerCase() });
     });
   });
 
@@ -412,11 +358,5 @@ window.addEventListener("hashchange", () => renderPage(currentId()));
 
 loadData().catch(error => {
   console.error(error);
-  document.getElementById("page").innerHTML = `
-    <section class="hero">
-      <span class="eyebrow">Setup Needed</span>
-      <h1>Couldn’t load the data files.</h1>
-      <p>This site uses JSON files, so it needs to be opened through a local web server instead of double-clicking index.html.</p>
-      <div class="notice"><strong>Run:</strong> <span class="code-line">python -m http.server 8000</span><br>Then open <span class="code-line">http://localhost:8000</span></div>
-    </section>`;
+  document.getElementById("page").innerHTML = `<section class="hero"><span class="eyebrow">Setup Needed</span><h1>Couldn’t load the data files.</h1><p>This site uses JSON files, so it needs to be opened through a local web server instead of double-clicking index.html.</p><div class="notice"><strong>Run:</strong> <span class="code-line">python -m http.server 8000</span><br>Then open <span class="code-line">http://localhost:8000</span></div></section>`;
 });
