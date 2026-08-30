@@ -51,11 +51,39 @@
     "category": "GETTING STARTED",
     "title": "🪧 How To Claim",
     "eyebrow": "GETTING STARTED",
-    "intro": "Document the land-claim process here with simple numbered steps.",
+    "intro": "Protect your home, builds, storage, farms, and belongings with GriefPrevention land claims.",
     "sections": [
       {
-        "title": "Coming Soon 🌱",
-        "html": "<p>Document the land-claim process here with simple numbered steps.</p><div class='quote-card'>This page is ready for your final Starberry information.</div>"
+        "title": "What is GriefPrevention? 🌿",
+        "html": "<p>StarberrySMP uses <strong>GriefPrevention</strong> to protect player builds and belongings. A claim creates a protected area where other players cannot freely break blocks, open containers, or modify your build unless you give them permission.</p><div class='quote-card'><strong>We recommend claiming your home as soon as you find a place to settle.</strong></div>"
+      },
+      {
+        "title": "Creating a Claim 🪏",
+        "html": "<ol class='steps'><li>Hold a <strong>Golden Shovel</strong>.</li><li>Right-click one corner of the area you want to protect.</li><li>Walk to the opposite corner of your build or property.</li><li>Right-click the opposite corner with the Golden Shovel.</li><li>Your claim will be created between those two points.</li></ol><p>Your claim protects the vertical space within the claimed area, so you do not need to claim each floor separately.</p>"
+      },
+      {
+        "title": "Claim Blocks ✨",
+        "html": "<p>Claims use <strong>Claim Blocks</strong>. Larger claims require more Claim Blocks, and you can earn additional Claim Blocks as you play.</p><p>If you do not have enough available Claim Blocks, you will need to make the claim smaller or earn more before expanding it.</p>"
+      },
+      {
+        "title": "Managing Your Claim 🏡",
+        "html": "<ul class='clean-list'><li><span class='code-line'>/trust &lt;player&gt;</span> — allows another player to build and interact inside your claim.</li><li><span class='code-line'>/untrust &lt;player&gt;</span> — removes a player's access.</li><li><span class='code-line'>/trustlist</span> — shows who currently has permission in your claim.</li><li><span class='code-line'>/abandonclaim</span> — removes the claim you are standing in and returns the Claim Blocks.</li><li><span class='code-line'>/abandonallclaims</span> — removes all of your claims.</li></ul>"
+      },
+      {
+        "title": "Resizing a Claim 🌱",
+        "html": "<p>To resize an existing claim, hold your <strong>Golden Shovel</strong> and right-click one of the claim's corners. You can then move that corner to a new location.</p><p>You must have enough available Claim Blocks if you are making the claim larger.</p>"
+      },
+      {
+        "title": "Viewing Claims 👀",
+        "html": "<p>Hold a <strong>Stick</strong> and right-click the ground to inspect nearby claims and temporarily view their boundaries.</p><ul class='clean-list'><li>See whether land is already claimed.</li><li>Check where claim boundaries begin and end.</li><li>See who owns the claimed area.</li></ul>"
+      },
+      {
+        "title": "Claim Etiquette 🍓",
+        "html": "<p>Please give other players enough room to build and expand. Unless the owner has given you permission to build closer, try to settle at least <strong>50 blocks away from another player's claim</strong>.</p><p>Do not use claims to surround, block, trap, or intentionally interfere with another player or community area.</p>"
+      },
+      {
+        "title": "Need Help? 💡",
+        "html": "<p>If you're having trouble creating, resizing, or managing a claim, open a ticket with <strong>Starling</strong> and a member of the Starberry staff team can help.</p><div class='quote-card'>🌿 Claiming your land is one of the first things we recommend doing after finding a place to call home.</div>"
       }
     ]
   },
