@@ -3,11 +3,35 @@
     "category": "THE FOREST",
     "title": "📜 Server Rules",
     "eyebrow": "THE FOREST",
-    "intro": "Community rules can be added here when they are finalized.",
+    "intro": "StarberrySMP is a welcoming PG-13 community. These rules apply across the Minecraft server, Discord, and other official Starberry spaces.",
     "sections": [
       {
-        "title": "Coming Soon 🌱",
-        "html": "<p>Community rules can be added here when they are finalized.</p><div class='quote-card'>This page is ready for your final Starberry information.</div>"
+        "title": "Community Conduct 🌿",
+        "html": "<ul class='clean-list'><li><strong>Be respectful.</strong> Harassment, bullying, witch hunting, discrimination, hate speech, targeted insults, or behavior intended to make others feel unwelcome is not allowed.</li><li><strong>Keep Starberry PG-13.</strong> Do not say, build, display, name, roleplay, post, or create sexually explicit, excessively graphic, hateful, discriminatory, or otherwise inappropriate content. This includes chat, builds, signs, books, maps, item names, skins, usernames, profile pictures, bios, images, videos, and links.</li><li><strong>No spam or unauthorized advertising.</strong> Do not spam messages, reactions, images, links, server invites, advertisements, or unsolicited promotional DMs without staff permission.</li><li><strong>Keep public chat in English.</strong> Public channels and server chat should remain in English so staff can properly moderate them.</li><li><strong>No impersonation.</strong> Do not impersonate staff, players, creators, or other community members in or outside official Starberry spaces.</li><li><strong>Follow Discord's Terms of Service and Community Guidelines.</strong></li></ul>"
+      },
+      {
+        "title": "Safety & Privacy 🔒",
+        "html": "<ul class='clean-list'><li><strong>Protect personal information.</strong> Do not publish, request, threaten to expose, or distribute private information such as real names, addresses, phone numbers, emails, passwords, financial information, or other sensitive details.</li><li><strong>No malicious links or cyber threats.</strong> IP grabbers, phishing links, malware, token grabbers, DDoS threats or attempts, hacking threats, and similar malicious activity are prohibited and may result in a permanent ban.</li><li><strong>Report concerns instead of escalating them.</strong> If you see rule-breaking behavior or something that makes you feel unsafe, open a ticket with <strong>Starling</strong> so staff can review it.</li></ul>"
+      },
+      {
+        "title": "Property, Claims & Community Areas 🏡",
+        "html": "<ul class='clean-list'><li><strong>No griefing or stealing.</strong> Do not damage, modify, take from, or interfere with another player's builds, storage, farms, animals, or belongings without permission.</li><li><strong>Respect land and claims.</strong> Give players room to build and expand. Unless you have permission, try to settle at least <strong>50 blocks away from another claim</strong>.</li><li><strong>No claim abuse.</strong> Do not use claims to surround, block, trap, inconvenience, or intentionally interfere with players or public areas.</li><li><strong>Respect community areas.</strong> Do not damage, alter, obstruct, or misuse spawn, roads, public farms, event areas, shared builds, or other community spaces.</li></ul>"
+      },
+      {
+        "title": "Fair Gameplay ⚖️",
+        "html": "<ul class='clean-list'><li><strong>No bugs, dupes, or exploits.</strong> Do not intentionally abuse unintended mechanics for personal gain. Report them to staff instead.</li><li><strong>No unfair advantages.</strong> Hacked clients, x-ray, combat or movement cheats, unauthorized automation, and other tools that provide an unfair advantage are not allowed.</li><li><strong>No AFK or macro abuse.</strong> Do not use macros, auto-clickers, scripts, or unattended methods to bypass intended gameplay, progression, or server systems.</li><li><strong>No unconsented killing.</strong> Do not intentionally kill, trap, or cause the death of another player without their consent unless participating in an approved PvP activity.</li><li><strong>Do not intentionally cause lag.</strong> Do not create or operate machines, farms, entities, redstone systems, or other setups intended to negatively affect server performance.</li></ul>"
+      },
+      {
+        "title": "Economy & Trading 💰",
+        "html": "<ul class='clean-list'><li><strong>No scamming.</strong> Do not intentionally deceive players during trades, shops, services, or agreements.</li><li><strong>No economy abuse.</strong> Do not manipulate the economy through exploits, alternate accounts, unintended prices, or other abusive methods.</li><li><strong>No real-money trading.</strong> Players may not buy, sell, or trade in-game items, currency, services, or accounts for real-world money outside official StarberrySMP services.</li></ul>"
+      },
+      {
+        "title": "Accounts & Punishments 👤",
+        "html": "<ul class='clean-list'><li><strong>Alternate accounts:</strong> Each player may use up to <strong>one Java account and one Bedrock account</strong>, but only <strong>one account may be online at a time</strong>. Alternate accounts may not be used to bypass limits, rewards, progression, or punishments.</li><li><strong>Account responsibility:</strong> Accounts may not be sold, traded, or shared to bypass server rules, limits, rewards, or punishments. You are responsible for activity that occurs on your account.</li><li><strong>Do not evade punishments.</strong> Do not use alternate accounts, VPNs, account sharing, or other methods to bypass warnings, mutes, bans, restrictions, or moderation actions.</li></ul>"
+      },
+      {
+        "title": "Support & Staff ⭐",
+        "html": "<ul class='clean-list'><li><strong>Do not unnecessarily ping staff.</strong> Use the appropriate support channels and <strong>Starling</strong> tickets whenever possible instead of repeatedly tagging or DMing staff.</li><li><strong>Do not abuse support systems.</strong> Do not spam tickets, submit knowingly false reports, repeatedly open the same issue, or intentionally misuse staff support systems.</li></ul><div class='quote-card'>🌿 Rules cannot cover every possible situation. Attempts to exploit loopholes or deliberately work around the intent of these rules may still result in moderation action.</div>"
       }
     ]
   },
