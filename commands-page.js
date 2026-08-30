@@ -21,7 +21,10 @@ const seedCommandPage = {
         ["/msg <player> <message>", "Send a private message"],
         ["/reply <message>", "Reply to your most recent private message"],
         ["/ignore <player>", "Ignore a player"],
-        ["/afk", "Toggle AFK status"]
+        ["/afk", "Toggle AFK status"],
+        ["/getskull <username>", "Get the skull/head of a specific player"],
+        ["/offhand", "Move the item in your hand to your offhand"],
+        ["/skulltoggle", "Toggle skull placement/interaction behavior"]
       ])
     },
     {
