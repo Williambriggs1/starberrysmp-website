@@ -14,9 +14,16 @@ document.addEventListener("click", event => {
 
   if (!section) return;
 
-  section.scrollIntoView({
-    behavior: "smooth",
-    block: "start"
+  // Account for the sticky top bar and leave a little breathing room above
+  // the section heading instead of letting it land too high/low on screen.
+  const topbar = document.querySelector(".topbar");
+  const topbarHeight = topbar ? topbar.getBoundingClientRect().height : 78;
+  const scrollOffset = topbarHeight + 28;
+  const targetY = section.getBoundingClientRect().top + window.scrollY - scrollOffset;
+
+  window.scrollTo({
+    top: Math.max(0, targetY),
+    behavior: "smooth"
   });
 });
 
@@ -39,7 +46,9 @@ const tocObserver = new MutationObserver(() => {
   if (!sections.length) return;
 
   const updateActive = () => {
-    const offset = 150;
+    const topbar = document.querySelector(".topbar");
+    const topbarHeight = topbar ? topbar.getBoundingClientRect().height : 78;
+    const offset = topbarHeight + 36;
     let active = sections[0];
 
     for (const item of sections) {
