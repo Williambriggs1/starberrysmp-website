@@ -24,7 +24,7 @@ const seedCommandPage = {
         ["/afk", "Toggle AFK status"],
         ["/getskull <username>", "Get the skull/head of a specific player"],
         ["/offhand", "Move the item in your hand to your offhand"],
-        ["/skulltoggle", "Toggle skull placement/interaction behavior"]
+        ["/skulltoggle", "Toggle whether other players can get your skull/head"]
       ])
     },
     {
