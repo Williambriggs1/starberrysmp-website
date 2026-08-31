@@ -261,3 +261,20 @@ kbd,
 .search-results small {
   color: #aeb8ad;
 }
+
+/* Mobile navigation: use the dynamic viewport and explicitly allow touch scrolling. */
+@media (max-width: 820px) {
+  .sidebar.open {
+    display: block;
+    top: 110px;
+    bottom: 12px;
+    height: auto;
+    max-height: calc(100dvh - 122px);
+    overflow-y: auto;
+    overflow-x: hidden;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
+    touch-action: pan-y;
+    padding-bottom: calc(18px + env(safe-area-inset-bottom));
+  }
+}
