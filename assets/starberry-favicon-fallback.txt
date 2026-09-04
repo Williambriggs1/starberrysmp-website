@@ -1,1 +1,0 @@
-Starberry favicon asset is managed through the Git data API.
