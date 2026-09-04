@@ -70,6 +70,17 @@
     if (tag) tag.setAttribute(attribute, value);
   }
 
+  function ensureLink(rel, href, extra = {}) {
+    let link = document.querySelector(`link[rel="${rel}"]`);
+    if (!link) {
+      link = document.createElement("link");
+      link.rel = rel;
+      document.head.appendChild(link);
+    }
+    link.href = href;
+    Object.entries(extra).forEach(([key, value]) => link.setAttribute(key, value));
+  }
+
   function updateSeo() {
     const id = typeof currentId === "function" ? currentId() : "welcome";
     const meta = metaByPage[id] || metaByPage.welcome;
@@ -79,6 +90,11 @@
     setMeta('meta[property="og:description"]', "content", meta.description);
     setMeta('meta[name="twitter:title"]', "content", meta.title);
     setMeta('meta[name="twitter:description"]', "content", meta.description);
+
+    // Keep the Starberry logo as the browser/tab icon across every route.
+    ensureLink("icon", "/assets/starberry-logo.png?v=3", { type: "image/png", sizes: "64x64" });
+    ensureLink("shortcut icon", "/assets/starberry-logo.png?v=3", { type: "image/png" });
+    ensureLink("apple-touch-icon", "/assets/starberry-logo.png?v=3");
   }
 
   window.addEventListener("hashchange", updateSeo);
