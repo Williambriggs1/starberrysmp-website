@@ -25,10 +25,17 @@ function starberryIsKnownPage(id) {
 }
 
 currentId = function() {
+  const hashId = window.location.hash.replace("#", "").trim();
+
+  // Legacy/non-SEO pages still use hashes on the root URL, e.g. /#getting-started.
+  // Prefer a known page hash over the root path so those pages render correctly.
+  if (hashId && starberryIsKnownPage(hashId)) return hashId;
+
   let path = window.location.pathname || "/";
   if (!path.endsWith("/")) path += "/";
   if (starberryPathRoutes[path]) return starberryPathRoutes[path];
-  return window.location.hash.replace("#", "") || "welcome";
+
+  return hashId || "welcome";
 };
 
 renderNav = function() {
