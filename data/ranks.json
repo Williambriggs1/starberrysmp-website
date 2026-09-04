@@ -6,6 +6,7 @@
     "type": "Default Rank",
     "description": "Every Starberry player begins as a Seed. It includes the core commands and features needed to enjoy the server normally.",
     "quickshop_limit": 3,
+    "home_limit": 1,
     "perks": [
       "Core Seed/default command set",
       "/getskull <username>",
@@ -21,6 +22,7 @@
     "type": "Supporter Rank",
     "description": "The first supporter tier, adding extra convenience while keeping Starberry's progression fair and survival-focused.",
     "quickshop_limit": 6,
+    "home_limit": 2,
     "perks": [
       "Includes previous-rank perks",
       "Up to 6 QuickShop shops"
@@ -33,9 +35,11 @@
     "type": "Supporter Rank",
     "description": "A growing supporter tier with additional personalization and more room to expand a player-run shop.",
     "quickshop_limit": 10,
+    "home_limit": 3,
     "perks": [
       "Includes previous-rank perks",
       "/nick access",
+      "/back for teleportation only — does not return you to your death location",
       "Up to 10 QuickShop shops"
     ]
   },
@@ -46,6 +50,7 @@
     "type": "Supporter Rank",
     "description": "A higher supporter tier focused on customization and larger player shops.",
     "quickshop_limit": 16,
+    "home_limit": 5,
     "perks": [
       "Includes previous-rank perks",
       "RGB nickname access",
@@ -60,6 +65,7 @@
     "type": "Supporter Rank",
     "description": "Starberry's highest supporter tier, with the largest currently defined player-shop allowance and the perks of every rank below it.",
     "quickshop_limit": 30,
+    "home_limit": 10,
     "perks": [
       "Includes all previous-rank perks",
       "Up to 30 QuickShop shops"
