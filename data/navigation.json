@@ -3,126 +3,42 @@
     {
       "title": "THE FOREST",
       "pages": [
-        {
-          "id": "welcome",
-          "icon": "🍓",
-          "label": "Welcome to Starberry!"
-        },
-        {
-          "id": "rules",
-          "icon": "📜",
-          "label": "Server Rules"
-        },
-        {
-          "id": "links",
-          "icon": "🔗",
-          "label": "Important Links"
-        },
-        {
-          "id": "faq",
-          "icon": "❓",
-          "label": "FAQ"
-        }
+        {"id":"welcome","icon":"🍓","label":"Welcome to Starberry!"},
+        {"id":"rules","icon":"📜","label":"Server Rules"},
+        {"id":"links","icon":"🔗","label":"Important Links"},
+        {"id":"faq","icon":"❓","label":"FAQ"}
       ]
     },
     {
       "title": "GETTING STARTED",
       "pages": [
-        {
-          "id": "join",
-          "icon": "🌱",
-          "label": "How To Join"
-        },
-        {
-          "id": "getting-started",
-          "icon": "🏡",
-          "label": "Getting Started"
-        },
-        {
-          "id": "claims",
-          "icon": "🪧",
-          "label": "How To Claim"
-        },
-        {
-          "id": "commands",
-          "icon": "⌨️",
-          "label": "Commands"
-        },
-        {
-          "id": "server-info",
-          "icon": "🌎",
-          "label": "Server Information"
-        },
-        {
-          "id": "cosmetics",
-          "icon": "✨",
-          "label": "Cosmetics"
-        }
+        {"id":"join","icon":"🌱","label":"How To Join"},
+        {"id":"getting-started","icon":"🏡","label":"Getting Started"},
+        {"id":"claims","icon":"🪧","label":"How To Claim"},
+        {"id":"commands","icon":"⌨️","label":"Commands"},
+        {"id":"server-info","icon":"🌎","label":"Server Information"},
+        {"id":"cosmetics","icon":"✨","label":"Cosmetics"}
       ]
     },
     {
       "title": "GAMEPLAY",
       "pages": [
-        {
-          "id": "farming",
-          "icon": "🌾",
-          "label": "Farming"
-        },
-        {
-          "id": "mining",
-          "icon": "⛏️",
-          "label": "Mining"
-        },
-        {
-          "id": "foraging",
-          "icon": "🍃",
-          "label": "Foraging"
-        },
-        {
-          "id": "fishing",
-          "icon": "🎣",
-          "label": "Fishing"
-        },
-        {
-          "id": "skills",
-          "icon": "⭐",
-          "label": "Skills"
-        },
-        {
-          "id": "crops",
-          "icon": "🌱",
-          "label": "Custom Crops"
-        },
-        {
-          "id": "food",
-          "icon": "🥧",
-          "label": "Cooking & Food"
-        },
-        {
-          "id": "economy",
-          "icon": "💰",
-          "label": "Currency & Bank"
-        }
+        {"id":"farming","icon":"🌾","label":"Farming"},
+        {"id":"mining","icon":"⛏️","label":"Mining"},
+        {"id":"foraging","icon":"🍃","label":"Foraging"},
+        {"id":"fishing","icon":"🎣","label":"Fishing"},
+        {"id":"skills","icon":"⭐","label":"Skills"},
+        {"id":"crops","icon":"🌱","label":"Custom Crops"},
+        {"id":"food","icon":"🥧","label":"Cooking & Food"},
+        {"id":"economy","icon":"💰","label":"Currency & Bank"}
       ]
     },
     {
       "title": "COMMUNITY",
       "pages": [
-        {
-          "id": "events",
-          "icon": "🎉",
-          "label": "Events"
-        },
-        {
-          "id": "supporter",
-          "icon": "💖",
-          "label": "Supporter"
-        },
-        {
-          "id": "changelog",
-          "icon": "📢",
-          "label": "Changelog"
-        }
+        {"id":"events","icon":"🎉","label":"Events"},
+        {"id":"supporter","icon":"💖","label":"Ranks & Supporter"},
+        {"id":"changelog","icon":"📢","label":"Changelog"}
       ]
     }
   ]
