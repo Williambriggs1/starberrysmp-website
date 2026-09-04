@@ -55,6 +55,10 @@ function setupSearch() {
     return safe.replace(regex, "<mark>$1</mark>");
   }
 
+  function pageHref(pageId) {
+    return typeof starberryPageUrl === "function" ? starberryPageUrl(pageId) : `/#${pageId}`;
+  }
+
   function render(query) {
     const q = query.trim();
     activeIndex = -1;
@@ -87,7 +91,7 @@ function setupSearch() {
     }
 
     results.innerHTML = currentMatches.map((entry, index) => `
-      <a class="search-result" role="option" aria-selected="false" data-index="${index}" href="#${entry.pageId}">
+      <a class="search-result" role="option" aria-selected="false" data-index="${index}" href="${pageHref(entry.pageId)}">
         <span class="search-result-icon">${entry.icon || "✦"}</span>
         <span class="search-result-copy">
           <span class="search-result-topline">
@@ -114,10 +118,7 @@ function setupSearch() {
   }
 
   input.addEventListener("input", () => render(input.value));
-
-  input.addEventListener("focus", () => {
-    render(input.value);
-  });
+  input.addEventListener("focus", () => render(input.value));
 
   input.addEventListener("keydown", event => {
     if (event.key === "ArrowDown") {
