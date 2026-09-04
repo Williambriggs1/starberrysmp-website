@@ -1,0 +1,56 @@
+.lore-line {
+  position: relative;
+  margin: 10px 0 12px;
+  padding: 10px 12px 10px 34px;
+  border-radius: 12px;
+  color: #d8cfe8;
+  font-size: 13px;
+  line-height: 1.55;
+  font-style: italic;
+  background:
+    radial-gradient(circle at 100% 0%, rgba(184,167,216,.10), transparent 42%),
+    linear-gradient(90deg, rgba(184,167,216,.08), rgba(229,111,134,.045));
+  border: 1px solid rgba(184,167,216,.16);
+  border-left: 3px solid rgba(226,194,122,.72);
+}
+
+.lore-line::before {
+  content: "✦";
+  position: absolute;
+  left: 12px;
+  top: 9px;
+  color: var(--gold, #e2c27a);
+  font-style: normal;
+  text-shadow: 0 0 10px rgba(226,194,122,.25);
+}
+
+.lore-line::after {
+  content: "LORE";
+  position: absolute;
+  right: 10px;
+  top: 7px;
+  font-size: 8px;
+  line-height: 1;
+  letter-spacing: .15em;
+  font-style: normal;
+  font-weight: 900;
+  color: rgba(184,167,216,.42);
+}
+
+.catalog-card:hover .lore-line {
+  border-color: rgba(184,167,216,.24);
+  background:
+    radial-gradient(circle at 100% 0%, rgba(184,167,216,.13), transparent 42%),
+    linear-gradient(90deg, rgba(184,167,216,.10), rgba(229,111,134,.055));
+}
+
+@media (max-width: 520px) {
+  .lore-line {
+    padding-right: 12px;
+    font-size: 12.5px;
+  }
+
+  .lore-line::after {
+    display: none;
+  }
+}
