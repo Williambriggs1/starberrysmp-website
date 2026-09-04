@@ -21,6 +21,7 @@ function buildRanksPage() {
         </div>
       </div>
       <p>${rank.description}</p>
+      <div class="rank-shop-limit"><span>🏡 SetHome Limit</span><strong>${rank.home_limit}</strong></div>
       <div class="rank-shop-limit"><span>🧺 QuickShop Limit</span><strong>${rank.quickshop_limit}</strong></div>
       <ul class="rank-perks">
         ${rank.perks.map(perk => `<li>${escapeRankText(perk)}</li>`).join("")}
@@ -43,7 +44,7 @@ function buildRanksPage() {
       },
       {
         title: "About Supporter Perks 💖",
-        html: `<div class="quote-card">Supporter ranks are designed around quality-of-life features, personalization, and extra room for things like player shops. Additional perks may be added as the server is finalized.</div>`
+        html: `<div class="quote-card">Supporter ranks are designed around quality-of-life features, personalization, and extra room for things like homes and player shops. Additional perks may be added as the server is finalized.</div>`
       }
     ]
   };
