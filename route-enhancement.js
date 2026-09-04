@@ -18,6 +18,12 @@ function starberryPageUrl(id) {
   return starberrySeoRoutes[id] || `/#${id}`;
 }
 
+function starberryIsKnownPage(id) {
+  if (starberrySeoRoutes[id]) return true;
+  if (typeof state === "undefined" || !state.navigation) return false;
+  return state.navigation.groups.some(group => group.pages.some(page => page.id === id));
+}
+
 currentId = function() {
   let path = window.location.pathname || "/";
   if (!path.endsWith("/")) path += "/";
@@ -40,12 +46,13 @@ renderNav = function() {
   `).join("");
 };
 
-// Convert legacy page hashes and search-result links into their clean URL equivalent.
+// On clean URL pages, legacy #page links still need to reach the correct guide page.
+// Section links in the On This Page menu are intentionally left alone for smooth scrolling.
 document.addEventListener("click", event => {
   const anchor = event.target.closest("a[href^='#']");
-  if (!anchor) return;
+  if (!anchor || anchor.closest("#toc")) return;
   const id = (anchor.getAttribute("href") || "").slice(1);
-  if (!id || !starberrySeoRoutes[id]) return;
+  if (!id || !starberryIsKnownPage(id)) return;
   event.preventDefault();
-  window.location.href = starberrySeoRoutes[id];
+  window.location.href = starberryPageUrl(id);
 }, true);
