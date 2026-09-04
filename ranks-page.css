@@ -1,0 +1,116 @@
+.rank-path {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin: 14px 0 4px;
+}
+
+.rank-path span {
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: rgba(255,255,255,.035);
+  border: 1px solid rgba(184,167,216,.15);
+  font-weight: 800;
+}
+
+.rank-path b {
+  color: var(--gold);
+}
+
+.rank-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 14px;
+}
+
+.rank-card {
+  border-radius: 20px;
+  padding: 18px;
+  background:
+    radial-gradient(circle at 100% 0%, rgba(184,167,216,.08), transparent 34%),
+    linear-gradient(150deg, rgba(42,59,51,.96), rgba(31,43,39,.96) 65%, rgba(36,42,61,.92));
+  border: 1px solid rgba(143,174,139,.17);
+  box-shadow: 0 12px 28px rgba(0,0,0,.10);
+}
+
+.rank-card-top {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.rank-icon {
+  width: 46px;
+  height: 46px;
+  display: grid;
+  place-items: center;
+  border-radius: 14px;
+  background: rgba(0,0,0,.15);
+  border: 1px solid rgba(255,255,255,.05);
+  font-size: 24px;
+}
+
+.rank-type {
+  display: block;
+  color: var(--gold);
+  font-size: 10px;
+  letter-spacing: .12em;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.rank-card h3 {
+  margin: 2px 0 0;
+  font-size: 24px;
+}
+
+.rank-card p {
+  margin: 14px 0;
+  color: var(--text-soft);
+  font-size: 14px;
+}
+
+.rank-shop-limit {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin: 12px 0;
+  padding: 10px 12px;
+  border-radius: 12px;
+  background: rgba(0,0,0,.13);
+  border: 1px solid rgba(226,194,122,.12);
+}
+
+.rank-shop-limit span {
+  color: #d8d3c8;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.rank-shop-limit strong {
+  color: var(--gold);
+  font-size: 20px;
+}
+
+.rank-perks {
+  list-style: none;
+  margin: 12px 0 0;
+  padding: 0;
+}
+
+.rank-perks li {
+  position: relative;
+  padding: 7px 0 7px 20px;
+  color: #d7ddd6;
+  font-size: 13px;
+  border-top: 1px solid rgba(255,255,255,.04);
+}
+
+.rank-perks li::before {
+  content: "✦";
+  position: absolute;
+  left: 0;
+  color: var(--berry);
+}
