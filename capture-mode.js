@@ -176,8 +176,11 @@
       title: rank.name,
       subtitle: rank.description,
       body: `
-        <div class="capture-rank-limit"><span>🧺 QuickShop Limit</span><strong>${rank.quickshop_limit}</strong></div>
-        <div class="capture-list">${rank.perks.map(perk => `<div><b>✦</b><span>${esc(perk)}</span></div>`).join("")}</div>`
+        <div class="capture-tags">
+          <span><b>SetHome Limit</b>${rank.home_limit}</span>
+          <span><b>QuickShop Limit</b>${rank.quickshop_limit}</span>
+        </div>
+        <div class="capture-list" style="margin-top:12px;">${rank.perks.map(perk => `<div><b>✦</b><span>${esc(perk)}</span></div>`).join("")}</div>`
     });
   }
 
