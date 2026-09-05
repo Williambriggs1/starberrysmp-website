@@ -1,0 +1,265 @@
+{
+  "api_version": 1,
+  "name": "StarberrySMP Forest Guide API",
+  "description": "Public read-only API for StarberrySMP website data and Discord informational commands.",
+  "ownership_prefix": "Starberry:",
+  "sync_interval_seconds": 300,
+  "resource_cache_seconds": 15,
+  "brand": {
+    "color": 15036294,
+    "footer": "StarberrySMP · Forest Guide",
+    "home_url": "/"
+  },
+  "resources": {
+    "rules": {
+      "url": "/data/pages.json",
+      "kind": "html_rules",
+      "path": "rules.sections",
+      "id_field": "id",
+      "name_field": "name",
+      "icon": "📜",
+      "search_fields": ["id", "name", "description", "section"]
+    },
+    "server": {
+      "url": "/data/server.json",
+      "kind": "object"
+    },
+    "skills": {
+      "url": "/data/skills.json",
+      "kind": "array",
+      "id_field": "id",
+      "name_field": "name",
+      "icon_field": "icon",
+      "search_fields": ["id", "name", "short_description", "description"]
+    },
+    "crops": {
+      "url": "/data/crops.json",
+      "kind": "array",
+      "id_field": "id",
+      "name_field": "name",
+      "icon_field": "icon",
+      "search_fields": ["id", "name", "description", "lore", "uses"]
+    },
+    "foods": {
+      "url": "/data/foods.json",
+      "kind": "array",
+      "id_field": "id",
+      "name_field": "name",
+      "icon_field": "icon",
+      "search_fields": ["id", "name", "description", "lore", "main_ingredient", "purpose"]
+    },
+    "economy": {
+      "url": "/data/economy.json",
+      "kind": "object"
+    },
+    "ranks": {
+      "url": "/data/ranks.json",
+      "kind": "array",
+      "id_field": "id",
+      "name_field": "name",
+      "icon_field": "icon",
+      "search_fields": ["id", "name", "type", "description", "perks"]
+    }
+  },
+  "commands": [
+    {
+      "name": "alts",
+      "description": "Starberry: Show the alternate-account rule.",
+      "guide_url": "/rules/",
+      "action": {"mode": "lookup", "resource": "rules", "fixed_query": "alternate accounts"},
+      "embed": {
+        "title": "📜 {name}",
+        "description": [{"path": "description"}],
+        "fields": [{"name": "Section", "path": "section", "inline": true}]
+      }
+    },
+    {
+      "name": "rules",
+      "description": "Starberry: List the StarberrySMP server rules.",
+      "guide_url": "/rules/",
+      "action": {"mode": "list", "resource": "rules"},
+      "embed": {
+        "title": "📜 StarberrySMP Rules",
+        "hint": "Use `/rule <rule>` for the full wording of a specific rule.",
+        "list_template": "✦ **{name}**",
+        "show_total": true
+      }
+    },
+    {
+      "name": "rule",
+      "description": "Starberry: Show a StarberrySMP server rule.",
+      "guide_url": "/rules/",
+      "action": {"mode": "lookup", "resource": "rules", "query_option": "rule"},
+      "options": [{"type": 3, "name": "rule", "description": "Search server rules", "required": true, "autocomplete": true}],
+      "embed": {
+        "title": "📜 {name}",
+        "description": [{"path": "description"}],
+        "fields": [{"name": "Section", "path": "section", "inline": true}]
+      }
+    },
+    {
+      "name": "join",
+      "description": "Starberry: Show Java and Bedrock joining information.",
+      "guide_url": "/join/",
+      "action": {"mode": "object", "resource": "server"},
+      "embed": {
+        "title": "🌱 Join StarberrySMP",
+        "description": "Java & Bedrock crossplay information from the live Forest Guide.",
+        "fields": [
+          {"name": "Java", "path": "java_address", "inline": true},
+          {"name": "Bedrock", "template": "{bedrock_address}\nPort {bedrock_port}", "inline": true},
+          {"name": "Version", "path": "version", "inline": true}
+        ]
+      }
+    },
+    {
+      "name": "skills",
+      "description": "Starberry: List all Starberry skills.",
+      "guide_url": "/skills/",
+      "action": {"mode": "list", "resource": "skills"},
+      "embed": {
+        "title": "⭐ Starberry Skills",
+        "hint": "Use `/skill <skill>` to view one skill in detail.",
+        "list_template": "{icon} **{name}**",
+        "show_total": true
+      }
+    },
+    {
+      "name": "skill",
+      "description": "Starberry: Show information about a Starberry skill.",
+      "guide_url": "/skills/",
+      "action": {"mode": "lookup", "resource": "skills", "query_option": "skill"},
+      "options": [{"type": 3, "name": "skill", "description": "Search Starberry skills", "required": true, "autocomplete": true}],
+      "embed": {
+        "title": "{icon} {name}",
+        "description": [{"path": "description", "fallback_path": "short_description"}],
+        "fields": [{"name": "Milestones", "path": "milestones", "format": "milestones", "omit_if_empty": true}]
+      }
+    },
+    {
+      "name": "crops",
+      "description": "Starberry: List all custom crops.",
+      "guide_url": "/crops/",
+      "action": {"mode": "list", "resource": "crops"},
+      "embed": {
+        "title": "🌱 Starberry Custom Crops",
+        "hint": "Use `/crop <crop>` to view growth, harvest, lore, and uses.",
+        "list_template": "{icon} **{name}**",
+        "show_total": true
+      }
+    },
+    {
+      "name": "crop",
+      "description": "Starberry: Show information about a custom crop.",
+      "guide_url": "/crops/",
+      "action": {"mode": "lookup", "resource": "crops", "query_option": "crop"},
+      "options": [{"type": 3, "name": "crop", "description": "Search custom crops", "required": true, "autocomplete": true}],
+      "embed": {
+        "title": "{icon} {name}",
+        "description": [{"path": "description"}, {"path": "lore", "format": "italic", "omit_if_empty": true}],
+        "fields": [
+          {"name": "Growth", "path": "growth", "inline": true},
+          {"name": "Harvest", "path": "harvest", "inline": true},
+          {"name": "Used For", "path": "uses", "format": "comma_list", "inline": false}
+        ]
+      }
+    },
+    {
+      "name": "foods",
+      "description": "Starberry: List all custom foods and recipes.",
+      "guide_url": "/food/",
+      "action": {"mode": "list", "resource": "foods"},
+      "embed": {
+        "title": "🍽️ Starberry Foods & Recipes",
+        "hint": "Use `/food <food>` to view recipe and ingredient details.",
+        "list_template": "{icon} **{name}**",
+        "show_total": true
+      }
+    },
+    {
+      "name": "food",
+      "description": "Starberry: Show a custom food or recipe.",
+      "guide_url": "/food/",
+      "action": {"mode": "lookup", "resource": "foods", "query_option": "food"},
+      "options": [{"type": 3, "name": "food", "description": "Search foods and recipes", "required": true, "autocomplete": true}],
+      "embed": {
+        "title": "{icon} {name}",
+        "description": [{"path": "description"}, {"path": "lore", "format": "italic", "omit_if_empty": true}],
+        "fields": [
+          {"name": "Type", "path": "type", "inline": true},
+          {"name": "Main Ingredient", "path": "main_ingredient", "inline": true},
+          {"name": "Recipe", "path": "recipe", "format": "recipe", "inline": false}
+        ]
+      }
+    },
+    {
+      "name": "economy",
+      "description": "Starberry: Show the Starberry economy overview.",
+      "guide_url": "/economy/",
+      "action": {"mode": "object", "resource": "economy"},
+      "embed": {
+        "title": "💰 Starberry Economy",
+        "description": [{"path": "intro"}],
+        "fields": [
+          {"name": "Player Economy", "path": "currency_description"},
+          {"name": "Player Shops", "path": "player_shops.description"},
+          {"name": "Bank Baseline", "template": "{bank.input_icon} {bank.input_amount} {bank.input_item} → {bank.output_icon} ${bank.output_amount}", "inline": true}
+        ]
+      }
+    },
+    {
+      "name": "bank",
+      "description": "Starberry: Show the current Starberry bank information.",
+      "guide_url": "/economy/",
+      "action": {"mode": "object", "resource": "economy", "path": "bank"},
+      "embed": {
+        "title": "🏦 {name}",
+        "description": [{"path": "description"}],
+        "fields": [
+          {"name": "Current Baseline", "template": "{input_icon} {input_amount} {input_item} → {output_icon} ${output_amount}", "inline": true},
+          {"name": "Additional Selling", "path": "additional_selling"},
+          {"name": "Note", "path": "name_note", "omit_if_empty": true}
+        ]
+      }
+    },
+    {
+      "name": "ranks",
+      "description": "Starberry: List all Starberry player ranks.",
+      "guide_url": "/ranks/",
+      "action": {"mode": "list", "resource": "ranks"},
+      "embed": {
+        "title": "🍓 Starberry Ranks",
+        "hint": "Use `/rank <rank>` to view homes, QuickShop limits, and perks.",
+        "list_template": "{icon} **{name}** — {type}",
+        "show_total": true
+      }
+    },
+    {
+      "name": "rank",
+      "description": "Starberry: Show information about a player rank.",
+      "guide_url": "/ranks/",
+      "action": {"mode": "lookup", "resource": "ranks", "query_option": "rank"},
+      "options": [{"type": 3, "name": "rank", "description": "Search player ranks", "required": true, "autocomplete": true}],
+      "embed": {
+        "title": "{icon} {name}",
+        "description": [{"path": "description"}],
+        "fields": [
+          {"name": "Type", "path": "type", "inline": true},
+          {"name": "Homes", "path": "home_limit", "inline": true},
+          {"name": "QuickShops", "path": "quickshop_limit", "inline": true},
+          {"name": "Perks", "path": "perks", "format": "bullets", "inline": false}
+        ]
+      }
+    },
+    {
+      "name": "help",
+      "description": "Starberry: Show the Starberry informational commands.",
+      "guide_url": "/",
+      "action": {"mode": "help"},
+      "embed": {
+        "title": "🍓 StarberrySMP Information Commands",
+        "description": "These commands are loaded from the live Forest Guide API. New API commands can be added without changing Starling's code."
+      }
+    }
+  ]
+}
